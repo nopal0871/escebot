@@ -1090,6 +1090,7 @@ if(owner.length == 1) return caliph.sendContact(m.chat, owner[0], caliph.getName
 caliph.sendContactArray(m.chat, owner.map(a => a + '@s.whatsapp.net'),{ quoted: m })
 break
 case '~#':
+case '$':
 if (!text) return
 if (!isOwner) throw `Perintah Ini Khusus Owner Bot Ya ajg!!!!`
 m.reply('```Executing...```')
