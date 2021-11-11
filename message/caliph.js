@@ -21,6 +21,7 @@ let ocr = require('../lib/ocr')
 let fetch = require('node-fetch')
 let bdr = require("rumus-bdr")
 let uploadFile = require("../lib/uploadFile")
+let ff = require('fluent-ffmpeg') 
 let {
 MessageType: mType,
 GroupSettingChange: gcSet
@@ -742,10 +743,35 @@ case prefix+'s':
 case prefix+'sgif':
 case prefix+'stikergif':
 case prefix+'stickergif':
-if (args[0] && /https?:\/\//.test(args[0])) return caliph.sendSticker(m.chat, args[0], m, { packname, author })
-json = m.quoted ? m.quoted : m
-if (!/image|video/.test(json.mtype)) return m.reply(`Balas Video/Gambar dengan caption *${prefix + command}*!`)
-caliph.sendSticker(m.chat, await json.download(), m, { packname, author })
+    fq = m.quoted ? m.quoted : m
+    mime = (fq.msg || fq).mimetype || ''
+    duration = (fq.msg || fq).seconds || ''
+    med = m.quoted ? m.quoted.fakeObj : m
+    if (!/video|image/.test(mime) && fq.mtype !== 'stickerMessage') throw `Reply Foto/Video Dengan Caption *${command}*`
+    if (duration > 10) throw `Maksimal 10 Detik!`
+   media = await caliph.downloadAndSaveMediaMessage(med)
+     ran = (`./tmp/${new Date * 1}.webp`)
+       await ff(`./${media}`)
+        [fq.mtype == 'videoMessage' ? 'inputFormat' : 'input'](fq.mtype == 'videoMessage' ? media.split('.')[1] : media)
+        .on('start', function (cmd) {
+          console.log(`Started : ${cmd}`)
+        })
+        .on('error', function (e) {
+          console.log(`Error : ${e}`)
+          fs.unlinkSync(media)
+          tipe = media.endsWith('.mp4') ? 'video' : 'gif'
+          m.reply(`Error, Gagal Membuat sticker!`)
+        })
+        .on('end', async function () {
+          console.log('Finish')
+          buff = fs.readFileSync(ran)
+          await caliph.sendMessage(m.chat, await addExif(buff, packname, author), 'stickerMessage', { quoted: m })
+          fs.unlinkSync(media)
+          fs.unlinkSync(ran)
+        })
+       .addOutputOptions([`-vcodec`,`libwebp`,`-vf`,`scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0⁩.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`])
+        .toFormat('webp')
+        .save(ran)
 break
 case prefix+'ttp':
   if (!args[0]) return m.reply('Teksnya?')
