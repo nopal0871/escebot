@@ -3,6 +3,7 @@ let chalk = require('chalk')
 global.owner = ['62882003806038']
 global.autoread = false
 global.selfmode = false
+global.autobio = false // or node . --autobio
 global.thumb = './thumb/itsuki.jpg'
 global.fakereplyt = 'Rikka-Botz WhatsApp'
 global.mess = {
