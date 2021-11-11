@@ -73,10 +73,12 @@ var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay +
        // console.log(`Nama Bot : ${caliph.user.name}\nID Bot : ${awesome('+'+caliph.user.jid.split('@')[0]).getNumber('international')}\nMode : ${selfmode ? 'Self Mode' : 'Public Mode'}\nHostname : ${os.hostname()}`)
 		if (!fs.existsSync(authfile)) fs.writeFileSync(authfile, JSON.stringify(caliph.base64EncodedAuthInfo(), null, '\t'))
 	owner.map(a => caliph.reply(a + "@c.us", 'Bot Started.....'))
-              setInterval(async () => {
+          if (opts.autobio || global.autobio) {
+          setInterval(async () => {
               user = JSON.parse(fs.readFileSync('database/user/register.json', 'utf-8'))
                await caliph.setStatus(`Status : ${selfmode ? 'Self Mode' : 'Public Mode'} | Uptime ${waktu(process.uptime())} | User Registered : ${user.length} Users | Author : @caliph91 | Auto Update Bio After 1 Minute`)
              }, 60 * 1000)
+          }
 		})
     caliph.on('CB:action,,call', id => {
     require('./message/call')(caliph, id)
