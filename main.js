@@ -101,6 +101,7 @@ var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay +
      if (!chatUpdate.messages && !chatUpdate.count) return
     
  let msg = chatUpdate.messages.all()[0]
+         if (!msg.key) return
 	 if (!msg.message) return
      msg.message = msg.message.hasOwnProperty('ephemeralMessage') ? msg.message.ephemeralMessage.message : msg.message
        simple.smsg(caliph, msg)
