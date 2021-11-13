@@ -523,7 +523,7 @@ if (!q) throw 'Cari apa?'
 var { video, result } = await getJson(global.API('caliphAPI', '/api/ytplaymp3', { text }, 'apikey'))
 var caption = `Title : ${video.title}\nDuration : ${video.timestamp}\nUrl : https://youtu.be/${video.videoId}\nViews : ${video.views}\nUpload by : ${video.author.name}\nLink Channel : ${video.author.url}`.trim()
 caliph.sendMessage(m.chat, { url: video.image }, 'imageMessage', { quoted: m, caption })
-caliph.sendMessage(m.chat await getBuffer(result.url), 'audioMessage', { quoted: m, mimetype: 'audio/mpeg' })
+caliph.sendMessage(m.chat, await getBuffer(result.url), 'audioMessage', { quoted: m, mimetype: 'audio/mpeg' })
 break
 case prefix+'playvid':
 if (!q) throw 'Cari apa?'
