@@ -53,7 +53,7 @@ break
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
   fs.unwatchFile(file)
-  console.log(chalk.redBright("Update './lib/detect.js'"))
+  console.log(chalk.redBright("Update './message/detect.js'"))
   delete require.cache[file]
   require(file)
 })
