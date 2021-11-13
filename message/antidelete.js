@@ -25,7 +25,7 @@ caliph.forwardMessage(m.key.remoteJid, m.message, false).catch(e => console.log(
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
   fs.unwatchFile(file)
-  console.log(chalk.redBright("Update './lib/antidelete.js'"))
+  console.log(chalk.redBright("Update './message/antidelete.js'"))
   delete require.cache[file]
   require(file)
 })
