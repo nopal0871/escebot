@@ -169,6 +169,8 @@ Education Menu
 Convert Menu 
 - ${prefix}tomp3 (Reply/Kirim Video)
 - ${prefix}toimg (Reply Sticker)
+- ${prefix}flip (Reply Gambar)
+- ${prefix}sepia (Reply Gambar)
 - ${prefix}togif (Reply Sticker GIF)
 - ${prefix}tovideo (Reply Sticker GIF)
 
@@ -521,14 +523,14 @@ if (!q) throw 'Cari apa?'
 var { video, result } = await getJson(global.API('caliphAPI', '/api/ytplaymp3', { text }, 'apikey'))
 var caption = `Title : ${video.title}\nDuration : ${video.timestamp}\nUrl : https://youtu.be/${video.videoId}\nViews : ${video.views}\nUpload by : ${video.author.name}\nLink Channel : ${video.author.url}`.trim()
 caliph.sendMessage(m.chat, { url: video.image }, 'imageMessage', { quoted: m, caption })
-caliph.sendMessage(m.chat, { url: result.url }, 'audioMessage', { quoted: m, mimetype: 'audio/mpeg' })
+caliph.sendMessage(m.chat await getBuffer(result.url), 'audioMessage', { quoted: m, mimetype: 'audio/mpeg' })
 break
 case prefix+'playvid':
 if (!q) throw 'Cari apa?'
 var { video, result } = await getJson(global.API('caliphAPI', '/api/ytplaymp4', { text }, 'apikey'))
 var caption = `Title : ${video.title}\nDuration : ${video.timestamp}\nUrl : https://youtu.be/${video.videoId}\nViews : ${video.views}\nUpload by : ${video.author.name}\nLink Channel : ${video.author.url}`.trim()
 caliph.sendMessage(m.chat, { url: video.image }, 'imageMessage', { quoted: m, caption })
-caliph.sendMessage(m.chat, { url: result.url }, 'videoMessage', { quoted: m })
+caliph.sendMessage(m.chat, await getBuffer(result.url), 'videoMessage', { quoted: m })
 break
 case prefix+'togif':
 if (!m.quoted && m.quoted.mtype != mType.sticker) throw 'Reply Stikernya!'
@@ -697,9 +699,17 @@ case prefix+'bcgc':
 if (!isOwner) return m.reply('Perintah ini khusus Owner bot!')
 if (!args[0]) return m.reply('Teksnya mana amsu!')
 var chats = caliph.chats.all().filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message && !v.announce).map(v => v.jid)
-  var content = await caliph.cMod(m.chat, m, /bc|broadcast/i.test(text) ? text : text + '\n' + '' + '*「 BROADCAST 」*')
+  var content = await caliph.cMod(m.chat, m,  '*「 BROADCAST 」*\n\n' + /bc|broadcast/i.test(text) ? text : text)
   for (let id of chats) await caliph.copyNForward(id, content, true)
   caliph.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} group_`, m)
+break
+case prefix+'bc': 
+if (!isOwner) return m.reply('Perintah ini khusus Owner bot!')
+if (!args[0]) return m.reply('Teksnya mana amsu!')
+var chats = caliph.chats.all().filter(v => v.jid && v.jid !== 'status@broadcast').map(v => v.jid)
+  var content = await caliph.cMod(m.chat, m, '*「 BROADCAST 」*\n\n' + /bc|broadcast/i.test(text) ? text : text)
+  for (let id of chats) await caliph.copyNForward(id, content, true)
+  caliph.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} chats_`, m)
 break
 case prefix+'promote': 
 if (!m.isGroup) return m.reply('Perintah ini khusus didalam grup!')
@@ -1100,7 +1110,7 @@ if (q) m.reply(util.format(q), null, { detectLinks: false })
 if (s) m.reply(util.format(s), null, { detectLinks: false })
 })
 break
-							 case prefix+"update":
+case prefix+"update":
 if (!isOwner) throw `Perintah Ini Khusus Owner Bot Ya ajg!!!!`
 exec('git pull', (e, q, s) => {
 if (e) return m.reply(util.format(e), null, { detectLinks: false })
@@ -1120,7 +1130,7 @@ m.reply(util.format(e.message ? `Error : `+e.message : e))
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
   fs.unwatchFile(file)
-  console.log(chalk.redBright("Update './lib/caliph.js'"))
+  console.log(chalk.redBright("Update './message/caliph.js'"))
   delete require.cache[file]
   require(file)
 })
