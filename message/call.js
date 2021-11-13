@@ -15,7 +15,7 @@ let chalk = require('chalk')
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
   fs.unwatchFile(file)
-  console.log(chalk.redBright("Update './lib/call.js'"))
+  console.log(chalk.redBright("Update './message/call.js'"))
   delete require.cache[file]
   require(file)
 })
