@@ -699,16 +699,18 @@ case prefix+'bcgc':
 if (!isOwner) return m.reply('Perintah ini khusus Owner bot!')
 if (!args[0]) return m.reply('Teksnya mana amsu!')
 var chats = caliph.chats.all().filter(v => v.jid.endsWith('g.us') && !v.read_only && v.message && !v.announce).map(v => v.jid)
-  var content = await caliph.cMod(m.chat, m,  '*「 BROADCAST 」*\n\n' + text)
-  for (let id of chats) await caliph.copyNForward(id, content, true)
+  meks = m.quoted ? m.quoted.fakeObj : m
+  kont = await caliph.cMod(m.chat, meks, `*「 BROADCAST 」\n\n${text}`)
+  for (let id of chats) await caliph.copyNForward(id, kont, true)
   caliph.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} group_`, m)
 break
 case prefix+'bc': 
 if (!isOwner) return m.reply('Perintah ini khusus Owner bot!')
 if (!args[0]) return m.reply('Teksnya mana amsu!')
 var chats = caliph.chats.all().filter(v => v.jid && v.jid !== 'status@broadcast').map(v => v.jid)
-  var content = await caliph.cMod(m.chat, m, '*「 BROADCAST 」*\n\n' + text)
-  for (let id of chats) await caliph.copyNForward(id, content, true)
+   mek = m.quoted ? m.quoted.fakeObj : m
+  kon = await caliph.cMod(m.chat, mek, `*「 BROADCAST 」*\n\n${text}`)
+  for (let id of chats) await caliph.copyNForward(id, kon, true)
   caliph.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} chats_`, m)
 break
 case prefix+'promote': 
