@@ -7,10 +7,6 @@ Browsers
 } = require('@adiwajshing/baileys')
 let { color, bgcolor } = require('./lib/color')
 const cp = require('child_process')
-let handler_msg = require('./message/caliph')
-let handler_call = require('./message/call')
-let handler_antidelete = require('./message/antidelete')
-let handler_detect = require('./message/detect')
 const simple = require('./lib/simple.js')
 const WAPI = simple.WAConnection(WAConnection)
 const fetch = require('./lib/fetcher')
@@ -85,11 +81,11 @@ var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay +
           }
 		})
     caliph.on('CB:action,,call', id => {
-    handler_call(caliph, id)
+    require('./message/call')(caliph, id)
     })
     caliph.on('group-participants-update', async (anu) => {
 	console.log(anu)
-	handler_detect(caliph, anu)
+	require('./message/detect')(caliph, anu)
 	})
 	caliph.on('CB:action,,battery', json => {
       caliph.battery = Object.fromEntries(Object.entries(json[2][0][1]).map(v => [v[0], eval(v[1])]))
@@ -97,7 +93,7 @@ var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay +
       console.log(caliph.battery)
       })
       caliph.on('message-delete', async (m) => {
-      handler_antidelete(caliph, m)
+      require('./message/antidelete')(caliph, m)
     })
     caliph.on('chat-update', async chatUpdate => {
     try {
@@ -113,9 +109,11 @@ var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay +
 	if (!msg.key.fromMe && selfmode) return
 	if (msg.key.id.startsWith('XYZ0')) return
 	if (autoread) await caliph.chatRead(msg.chat).catch(() => {})
-    handler_msg(caliph, msg)
+    require('./message/caliph')(caliph, msg)
     } catch (e) {
     console.log(color('[ERR]', 'cyan'), color(e, 'red'))
+    global.owner.map(async a => await caliph.sendMessage(a + '@c.us', 'Handler Error :\n\n'+require('util').format(e) + '\n\nClosed...', 'conversation'))
+    process.exit()
     }
     })
     }
