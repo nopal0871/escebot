@@ -109,3 +109,4 @@ After that scan the QR code using your WhatsApp in your phone!
 * [`adiwajshing/baileys`](https://github.com/adiwajshing/baileys)
 * [`Nurutomo`](https://github.com/nurutomo)
 * [`MFarelS`](https://github.com/mfarels)
+* [`MhankBarBar`](https://github.com/mhankbarbar)
