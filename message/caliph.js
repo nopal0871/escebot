@@ -117,7 +117,7 @@ timeout = await setTimeout(() => {
 ress = tebakkata[chatss]
 caliph.reply(chatss, `Waktu Habis, Jawaban : ${ress.jawaban}`, ress.m)
 delete ress
-})
+}, 30 * 1000)
 break
 case prefix+'help': case prefix+'menu':
 caliph.updatePresence(m.chat, 'composing')
