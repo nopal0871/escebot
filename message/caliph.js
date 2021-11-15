@@ -112,7 +112,7 @@ case prefix+'tebakkata':
 var { result } = await getJson(global.API('caliphAPI', '/api/tebakkata', null, 'apikey'))
 wuis = await m.reply(`Pertanyaan : ${result.pertanyaan}\nTimeout : 30 Detik`)
 chatss = m.chat
-tebakkkata[m.chat] = { m: wuis, jawaban: result.jawaban.toLowerCase() }
+tebakkata[m.chat] = { m: wuis, jawaban: result.jawaban.toLowerCase() }
 timeout = await setTimeout(() => { 
 ress = tebakkata[chatss]
 caliph.reply(chatss, `Waktu Habis, Jawaban : ${ress.jawaban}`, ress.m)
