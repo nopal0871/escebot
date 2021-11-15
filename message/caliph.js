@@ -104,12 +104,12 @@ const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{
 return caliph.relayWAMessage(sendMsg)
 }
 if (tebakkata[m.chat] && m.quoted && m.quoted.id == tebakkata[m.chat].m.key.id) {
-if (budy !== tebakkata[m.chat].jawaban) return m.reply(`Salah!')
+if (budy !== tebakkata[m.chat].jawaban) return m.reply('Salah!')
 m.reply('Yee, Jawaban Kamu Benar!')
 }
 						 switch(command) {
 case prefix+'tebakkata':
-let { result } = await getJson(global.API('caliphAPI', '/api/tebakkata', null, 'apikey'))
+var { result } = await getJson(global.API('caliphAPI', '/api/tebakkata', null, 'apikey'))
 wuis = await m.reply(`Pertanyaan : ${result.pertanyaan}\nTimeout : 30 Detik`)
 chatss = m.chat
 tebakkkata[m.chat] = { m: wuis, jawaban: result.jawaban.toLowerCase() }
