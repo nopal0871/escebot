@@ -15,7 +15,7 @@ let getText = require('../lib/fetcher').text
 let tahta = require('../lib/tahta')
 let tahta2 = require('../lib/tahta2')
 let axios = require('axios')
-let { whatanime } = require(`../lib/functions`)
+let { whatanime, whatmusic} = require(`../lib/functions`)
 let brainly = require ('brainly-scraper')
 let ocr = require('../lib/ocr')
 let fetch = require('node-fetch')
@@ -47,6 +47,7 @@ let isAdmin = m.isGroup ? groupMem.find(a => a.jid == m.sender).isAdmin : false
 let budy = (typeof m.text == 'string' ? m.text : '')
 let body = budy
 let isVideo = (m.quoted ? m.quoted.mtype : m.mtype) == mType.video
+let isAudio = (m.quoted ? m.quoted.mtype : m.mtype) == mType.audio
 let isImage = (m.quoted ? m.quoted.mtype : m.mtype) == mType.image
 let isMedia = /image|video|sticker|audio/.test(m.quoted ? m.quoted.mtype : m.mtype)
 let args = body.trim().split(/ +/).slice(1)
@@ -199,6 +200,22 @@ Image Menu
 var img = fs.readFileSync(global.thumb)
 caliph.sendMessage(m.chat, img, mType.image, { quoted: freply('Rikka-Botz WhatsApp', img), caption: menu })
 break 
+case prefix+'whatmusic':
+if (!m.quoted) throw `Reply Musik Yg Mau Dicari judulnya!'
+if (!/audio|video/.test(m.quoted.mtype)) throw `Reply Musik Yg Mau Dicari judulnya!'
+buffer = await (m.quoted ? m.quoted : m).download()
+var { result } = await whatmusic(buffer)
+teks = `╠══✪〘 WHATMUSIC 〙✪══
+║
+┣ ❏ *Judul* : ${result.title}
+┣ ❏ *Artis* : ${result.artists}
+┣ ❏ *Genre* : ${result.genre == '' ? 'None' : result.genre}
+┣ ❏ *Album* : ${result.album}
+┣ ❏ *Rilis* : ${result.release_date}
+║
+╚═〘 ${caliph.user.name.toUpperCase()} 〙`.trim()
+caliph.reply(m.chat, teks, m)
+break
 case prefix+'bcgc': 
 case prefix+'bcgroup':
 case prefix+'broadcastgc':
@@ -1145,3 +1162,4 @@ fs.watchFile(file, () => {
   delete require.cache[file]
   require(file)
 })
+ 
