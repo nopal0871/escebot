@@ -201,8 +201,8 @@ var img = fs.readFileSync(global.thumb)
 caliph.sendMessage(m.chat, img, mType.image, { quoted: freply('Rikka-Botz WhatsApp', img), caption: menu })
 break 
 case prefix+'whatmusic':
-if (!m.quoted) throw `Reply Musik Yg Mau Dicari judulnya!'
-if (!/audio|video/.test(m.quoted.mtype)) throw `Reply Musik Yg Mau Dicari judulnya!'
+if (!m.quoted) throw `Reply Musik Yg Mau Dicari judulnya!`
+if (!/audio|video/.test(m.quoted.mtype)) throw `Reply Musik Yg Mau Dicari judulnya!`
 buffer = await (m.quoted ? m.quoted : m).download()
 var { result } = await whatmusic(buffer)
 teks = `╠══✪〘 WHATMUSIC 〙✪══
