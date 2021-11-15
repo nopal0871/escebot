@@ -22,6 +22,7 @@ let fetch = require('node-fetch')
 let bdr = require("rumus-bdr")
 let uploadFile = require("../lib/uploadFile")
 let ff = require('fluent-ffmpeg') 
+let tess = {}
 let {
 MessageType: mType,
 GroupSettingChange: gcSet
@@ -102,7 +103,15 @@ const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{
 
 return caliph.relayWAMessage(sendMsg)
 }
+if (tess.hasOwnProperty(m.chat) && m.quoted && m.quoted.id == tess[m.chat].id && text == tess[m.chat].text) {
+m.reply('tes direspon!')
+}
 						 switch(command) {
+case 'tes':
+if (!text) return
+h = await m.reply('ok') 
+tess[m.chat] = { id: h.key.id, text }
+break
 case prefix+'help': case prefix+'menu':
 caliph.updatePresence(m.chat, 'composing')
 var menu = `*WHATSAPP BOT*
