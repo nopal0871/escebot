@@ -22,7 +22,7 @@ let fetch = require('node-fetch')
 let bdr = require("rumus-bdr")
 let uploadFile = require("../lib/uploadFile")
 let ff = require('fluent-ffmpeg') 
-let tess = {}
+let tebakkata = {}
 let {
 MessageType: mType,
 GroupSettingChange: gcSet
@@ -103,14 +103,21 @@ const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{
 
 return caliph.relayWAMessage(sendMsg)
 }
-if (tess.hasOwnProperty(m.chat) && m.quoted && m.quoted.id == tess[m.chat].id && text == tess[m.chat].text) {
-m.reply('tes direspon!')
+if (tebakkata[m.chat] && m.quoted && m.quoted.id == tebakkata[m.chat].m.key.id) {
+if (budy !== tebakkata[m.chat].jawaban) return m.reply(`Salah!')
+m.reply('Yee, Jawaban Kamu Benar!')
 }
 						 switch(command) {
-case 'tes':
-if (!text) return
-h = await m.reply('ok') 
-tess[m.chat] = { id: h.key.id, text }
+case prefix+'tebakkata':
+let { result } = await getJson(global.API('caliphAPI', '/api/tebakkata', null, 'apikey'))
+wuis = await m.reply(`Pertanyaan : ${result.pertanyaan}\nTimeout : 30 Detik`)
+chatss = m.chat
+tebakkkata[m.chat] = { m: wuis, jawaban: result.jawaban.toLowerCase() }
+timeout = await setTimeout(() => { 
+ress = tebakkata[chatss]
+caliph.reply(chatss, `Waktu Habis, Jawaban : ${ress.jawaban}`, ress.m)
+delete ress
+})
 break
 case prefix+'help': case prefix+'menu':
 caliph.updatePresence(m.chat, 'composing')
