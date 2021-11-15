@@ -204,7 +204,7 @@ case prefix+'whatmusic':
 if (!m.quoted) throw `Reply Musik Yg Mau Dicari judulnya!`
 if (!/audio|video/.test(m.quoted.mtype)) throw `Reply Musik Yg Mau Dicari judulnya!`
 buffer = await (m.quoted ? m.quoted : m).download()
-var { data } = await whatmusic(buffer)
+var { data:result } = await whatmusic(buffer)
 teks = `╠══✪〘 WHATMUSIC 〙✪══
 ║
 ┣ ❏ *Judul* : ${result.title}
