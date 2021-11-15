@@ -253,6 +253,11 @@ dl = await caliph.downloadAndSaveMediaMessage(med)
 result = await ocr(dl)
 m.reply(`*IMAGE TO TEXT*:\n\nResult : \`\`\`${result}\`\`\``)
 break
+case prefix+'restart':
+if (!isOwner) throw `Kmu Owner??`
+await m.reply(`\`\`\`Restarting...\`\`\``)
+process.send('reset')
+break
 case prefix+'wait':
 case prefix+'whatanime': 
 if (!isImage) throw `kirim screenshot dari scene anime yang ingin anda cari untuk menampilkan detail dari scene tersebut dengan caption *${command}*`
