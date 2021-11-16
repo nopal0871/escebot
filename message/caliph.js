@@ -125,8 +125,8 @@ break
 case prefix+'help': case prefix+'menu':
 caliph.updatePresence(m.chat, 'composing')
 chatall = caliph.chats.array.filter(a => a.jid !== 'status@broadcast')
-pc = chatall.filter(a => a.endsWith('s.whatsapp.net'))
-gc = chatall.filter(a => a.endsWith('g.us'))
+pc = chatall.filter(a => a.jid.endsWith('s.whatsapp.net'))
+gc = chatall.filter(a => a.jid.endsWith('g.us'))
 menu = `
 ┏━━⬣ 𝙄𝙉𝙁𝙊
 ┃⬡ Nama User : ${caliph.getName(m.sender)}
