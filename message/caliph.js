@@ -124,97 +124,126 @@ tebakkata[m.chat] = { m: wuis, jawaban: result.jawaban.toLowerCase(), timeout }
 break
 case prefix+'help': case prefix+'menu':
 caliph.updatePresence(m.chat, 'composing')
-var menu = `*WHATSAPP BOT*
+chatall = caliph.chats.array.filter(a => a.jid !== 'status@broadcast')
+pc = chatall.filter(a => a.endsWith('s.whatsapp.net'))
+gc = chatall.filter(a => a.endsWith('g.us'))
+menu = `
+┏━━⬣ 𝙄𝙉𝙁𝙊
+┃⬡ Nama User : ${caliph.getName(m.sender)}
+┃⬡ Nama Bot : ${caliph.user.name}
+┃⬡ Prefix : 「 ${prefix} 」
+┃⬡ Total Pengguna : ${regist.length}
+┃⬡ Total Chat : ${chatall.length}
+┃⬡ Private Chat : ${pc}
+┃⬡ Total Grup : ${gc}
+┃⬡ Runtime : ${runtime()}
+┃⬡ Battery : ${caliph.battery ? caliph.battery.value +'%' : 'Belum kedetect'} ${caliph.battery ? caliph.battery.live ? '🔌 Charging...' : '⚡ Discharging' : ''}
+┃⬡ Source code : https://clph.pw/m9oU
+┗━━⬣
 
-Source code : https://clph.pw/m9oU
-Author : @caliph91
-Lib : Baileys
-Battery : ${caliph.battery ? caliph.battery.value +'%' : 'Belum kedetect'} ${caliph.battery ? caliph.battery.live ? '🔌 Charging...' : '⚡ Discharging' : ''}
+┏━━━⬣ 𝙂𝘾 𝘽𝙊𝙏 𝙒𝘼
+┃ ⬡ Gc 1 : https://clph.pw/ce566d
+┗━━⬣
 
-Main Menu 
-- ${prefix}blocklist
-- ${prefix}ping
-- ${prefix}owner 
+┏━━「 Main Menu 」
+┃⬡ #ping
+┃⬡ #blocklist
+┃⬡ #owner
+┗━━⬣
+	
+┏━━「 Group Menu 」
+┃ ⬡ #kick
+┃ ⬡ #add
+┃ ⬡ #demote
+┃ ⬡ #promote
+┃ ⬡ #antidelete
+┃ ⬡ #welcome
+┃ ⬡ #left
+┃ ⬡ #hidetag
+┃ ⬡ #linkgc
+┃ ⬡ #setgc
+┗━━━━━━━━━━━━━━
 
-Group Menu
-- ${prefix}kick @tag/reply message
-- ${prefix}add 628×××××/reply message
-- ${prefix}demote @tag/reply message
-- ${prefix}antidelete enable/disable
-- ${prefix}welcome enable/disable
-- ${prefix}left enable/disable
-- ${prefix}promote @tag/reply message
-- ${prefix}hidetag text
-- ${prefix}linkgroup 
+┏━━「 Download Menu 」
+┃ ⬡ #tiktok
+┃ ⬡ #play
+┃ ⬡ #playvid
+┗━━━━━━━━━━━━━━
 
-Owner Menu
-- ${prefix}block @tag/reply message
-- ${prefix}unblock @tag/reply message
-- ${prefix}setname text
-- ${prefix}setbio text
-- ${prefix}join linkgroup
-- > JavaScript Code
-- => JavaScript Code
-- ~# (term Code)
-- ${prefix}public
-- ${prefix}self
-- ${prefix}ban @tag/reply message
-$ ${prefix}unban @tag/reply message
+┏━━「 Sticker Menu 」
+┃ ⬡ #attp
+┃ ⬡ #ttp
+┃ ⬡ #sticker
+┃ ⬡ #tovideo
+┃ ⬡ #togif
+┃ ⬡ #toimg
+┗━━━━━━━━━━━━━━
 
-Other Menu
-- ${prefix}toimg (reply sticker)
-- ${prefix}tahta (teks)
-- ${prefix}tahta2 (teks)
-- ${prefix}ttp (teks)
-- ${prefix}ttp2 (teks)
-- ${prefix}ttp3 (teks)
-- ${prefix}attp (teks)
-- ${prefix}attp2 (teks)
-- ${prefix}attp3 (teks)
-- ${prefix}sticker (reply image/video)
-- ${prefix}shortlink (url)
+┏━━「 Search Menu 」
+┃ ⬡ #brainly
+┃ ⬡ #whatmusic
+┃ ⬡ #whatanime
+┃ ⬡ #wiki
+┃ ⬡ #pinterest
+┗━━━━━━━━━━━━━━
 
-Search Menu
-- ${prefix}pinterest (query)
-- ${prefix}wiki (query)
-- ${prefix}playvid (query)
-- ${prefix}play (query)
+┏━━「 Owner Menu 」
+┃ ⬡ #block
+┃ ⬡ #unblock
+┃ ⬡ #ban
+┃ ⬡ #unban
+┃ ⬡ #join
+┃ ⬡ #self
+┃ ⬡ #public
+┃ ⬡ #setbio
+┃ ⬡ #setname
+┃ ⬡ #setppbot
+┃ ⬡ $
+┃ ⬡ >
+┃ ⬡ =>
+┗━━━━━━━━━━━━━━
 
-Education Menu
-- ${prefix}brainly (pertanyaan)
-- ${prefix}wiki (query)
-- ${prefix}wikipedia (query)
-- ${prefix}calc 10-3
+┏━━「 Maker Menu 」
+┃ ⬡ #lolimaker
+┃ ⬡ #nekologo
+┃ ⬡ #sadboy
+┃ ⬡ #remlogo
+┃ ⬡ #kanekilogo
+┃ ⬡ #nulis
+┃ ⬡ #sepia
+┃ ⬡ #flip
+┗━━━━━━━━━━━━━━
 
-Convert Menu 
-- ${prefix}tomp3 (Reply/Kirim Video)
-- ${prefix}toimg (Reply Sticker)
-- ${prefix}flip (Reply Gambar)
-- ${prefix}sepia (Reply Gambar)
-- ${prefix}togif (Reply Sticker GIF)
-- ${prefix}tovideo (Reply Sticker GIF)
+┏━━「 Random Menu 」
+┃ ⬡ #ppcouple
+┃ ⬡ #loli
+┃ ⬡ #waifu
+┃ ⬡ #neko
+┃ ⬡ #katabijak
+┃ ⬡ #dare
+┃ ⬡ #truth
+┃ ⬡ #dadu
+┃ ⬡ #lolivid
+┗━━━━━━━━━━━━━━
 
-Random Menu 
-- ${prefix}ppcouple
-- ${prefix}loli
-- ${prefix}waifu
-- ${prefix}neko
-- ${prefix}katabijak
-- ${prefix}dare
-- ${prefix}truth
-- ${prefix}dadu 
-- ${prefix}lolivid
+┏━━「 Convert Menu 」
+┃ ⬡ #tomp3
+┃ ⬡ #tovideo
+┃ ⬡ #togif
+┃ ⬡ #flip
+┃ ⬡ #sticker
+┗━━━━━━━━━━━━━━
 
-Maker Menu
-- ${prefix}lolimaker (teks)
-- ${prefix}nekologo (teks|teks2)
-- ${prefix}sadboy (teks|teks2)
-- ${prefix}remlogo (teks)
-- ${prefix}kanekilogo (teks|teks2)
+┏━━「 Other Menu 」
+┃ ⬡ #shortlink
+┃ ⬡ #ttp
+┃ ⬡ #ttp2
+┃ ⬡ #ttp3
+┃ ⬡ #attp
+┃ ⬡ #attp2
+┃ ⬡ #attp3
+┗━━「 ${caliph.user.name.toUpperCase()} 」━━
 
-Image Menu
-- ${prefix}flip (Reply/Kirim Gambar)
-- ${prefix}sepia (Reply/Kirim Gambar)
 `.trim()
 var img = fs.readFileSync(global.thumb)
 caliph.sendMessage(m.chat, img, mType.image, { quoted: freply('Rikka-Botz WhatsApp', img), caption: menu })
