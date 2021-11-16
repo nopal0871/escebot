@@ -134,8 +134,8 @@ menu = `
 ┃⬡ Prefix : 「 ${prefix} 」
 ┃⬡ Total Pengguna : ${regist.length}
 ┃⬡ Total Chat : ${chatall.length}
-┃⬡ Private Chat : ${pc}
-┃⬡ Total Grup : ${gc}
+┃⬡ Private Chat : ${pc.length}
+┃⬡ Total Grup : ${gc.length}
 ┃⬡ Runtime : ${runtime()}
 ┃⬡ Battery : ${caliph.battery ? caliph.battery.value +'%' : 'Belum kedetect'} ${caliph.battery ? caliph.battery.live ? '🔌 Charging...' : '⚡ Discharging' : ''}
 ┃⬡ Source code : https://clph.pw/m9oU
