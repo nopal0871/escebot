@@ -146,102 +146,102 @@ menu = `
 ┗━━⬣
 
 ┏━━「 Main Menu 」
-┃⬡ #ping
-┃⬡ #blocklist
-┃⬡ #owner
+┃⬡ ${prefix}ping
+┃⬡ ${prefix}blocklist
+┃⬡ ${prefix}owner
 ┗━━⬣
 	
 ┏━━「 Group Menu 」
-┃ ⬡ #kick
-┃ ⬡ #add
-┃ ⬡ #demote
-┃ ⬡ #promote
-┃ ⬡ #antidelete
-┃ ⬡ #welcome
-┃ ⬡ #left
-┃ ⬡ #hidetag
-┃ ⬡ #linkgc
-┃ ⬡ #setgc
+┃ ⬡ ${prefix}kick
+┃ ⬡ ${prefix}add
+┃ ⬡ ${prefix}demote
+┃ ⬡ ${prefix}promote
+┃ ⬡ ${prefix}antidelete
+┃ ⬡ ${prefix}welcome
+┃ ⬡ ${prefix}left
+┃ ⬡ ${prefix}hidetag
+┃ ⬡ ${prefix}linkgc
+┃ ⬡ ${prefix}setgc
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Download Menu 」
-┃ ⬡ #tiktok
-┃ ⬡ #play
-┃ ⬡ #playvid
+┃ ⬡ ${prefix}tiktok
+┃ ⬡ ${prefix}play
+┃ ⬡ ${prefix}playvid
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Sticker Menu 」
-┃ ⬡ #attp
-┃ ⬡ #ttp
-┃ ⬡ #sticker
-┃ ⬡ #tovideo
-┃ ⬡ #togif
-┃ ⬡ #toimg
+┃ ⬡ ${prefix}attp
+┃ ⬡ ${prefix}ttp
+┃ ⬡ ${prefix}sticker
+┃ ⬡ ${prefix}tovideo
+┃ ⬡ ${prefix}togif
+┃ ⬡ ${prefix}toimg
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Search Menu 」
-┃ ⬡ #brainly
-┃ ⬡ #whatmusic
-┃ ⬡ #whatanime
-┃ ⬡ #wiki
-┃ ⬡ #pinterest
+┃ ⬡ ${prefix}brainly
+┃ ⬡ ${prefix}whatmusic
+┃ ⬡ ${prefix}whatanime
+┃ ⬡ ${prefix}wiki
+┃ ⬡ ${prefix}pinterest
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Owner Menu 」
-┃ ⬡ #block
-┃ ⬡ #unblock
-┃ ⬡ #ban
-┃ ⬡ #unban
-┃ ⬡ #join
-┃ ⬡ #self
-┃ ⬡ #public
-┃ ⬡ #setbio
-┃ ⬡ #setname
-┃ ⬡ #setppbot
+┃ ⬡ ${prefix}block
+┃ ⬡ ${prefix}unblock
+┃ ⬡ ${prefix}ban
+┃ ⬡ ${prefix}unban
+┃ ⬡ ${prefix}join
+┃ ⬡ ${prefix}self
+┃ ⬡ ${prefix}public
+┃ ⬡ ${prefix}setbio
+┃ ⬡ ${prefix}setname
+┃ ⬡ ${prefix}setppbot
 ┃ ⬡ $
 ┃ ⬡ >
 ┃ ⬡ =>
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Maker Menu 」
-┃ ⬡ #lolimaker
-┃ ⬡ #nekologo
-┃ ⬡ #sadboy
-┃ ⬡ #remlogo
-┃ ⬡ #kanekilogo
-┃ ⬡ #nulis
-┃ ⬡ #sepia
-┃ ⬡ #flip
+┃ ⬡ ${prefix}lolimaker
+┃ ⬡ ${prefix}nekologo
+┃ ⬡ ${prefix}sadboy
+┃ ⬡ ${prefix}remlogo
+┃ ⬡ ${prefix}kanekilogo
+┃ ⬡ ${prefix}nulis
+┃ ⬡ ${prefix}sepia
+┃ ⬡ ${prefix}flip
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Random Menu 」
-┃ ⬡ #ppcouple
-┃ ⬡ #loli
-┃ ⬡ #waifu
-┃ ⬡ #neko
-┃ ⬡ #katabijak
-┃ ⬡ #dare
-┃ ⬡ #truth
-┃ ⬡ #dadu
-┃ ⬡ #lolivid
+┃ ⬡ ${prefix}ppcouple
+┃ ⬡ ${prefix}loli
+┃ ⬡ ${prefix}waifu
+┃ ⬡ ${prefix}neko
+┃ ⬡ ${prefix}katabijak
+┃ ⬡ ${prefix}dare
+┃ ⬡ ${prefix}truth
+┃ ⬡ ${prefix}dadu
+┃ ⬡ ${prefix}lolivid
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Convert Menu 」
-┃ ⬡ #tomp3
-┃ ⬡ #tovideo
-┃ ⬡ #togif
-┃ ⬡ #flip
-┃ ⬡ #sticker
+┃ ⬡ ${prefix}tomp3
+┃ ⬡ ${prefix}tovideo
+┃ ⬡ ${prefix}togif
+┃ ⬡ ${prefix}flip
+┃ ⬡ ${prefix}sticker
 ┗━━━━━━━━━━━━━━
 
 ┏━━「 Other Menu 」
-┃ ⬡ #shortlink
-┃ ⬡ #ttp
-┃ ⬡ #ttp2
-┃ ⬡ #ttp3
-┃ ⬡ #attp
-┃ ⬡ #attp2
-┃ ⬡ #attp3
+┃ ⬡ ${prefix}shortlink
+┃ ⬡ ${prefix}ttp
+┃ ⬡ ${prefix}ttp2
+┃ ⬡ ${prefix}ttp3
+┃ ⬡ ${prefix}attp
+┃ ⬡ ${prefix}attp2
+┃ ⬡ ${prefix}attp3
 ┗━━「 ${caliph.user.name.toUpperCase()} 」━━
 
 `.trim()
