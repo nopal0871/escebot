@@ -3,7 +3,7 @@ Info Author
 
 github : caliph91
 YouTube : caliph71
-Website : https://caliph71.xyz 
+Website : https://caliph.my.id
 
 */
 let util = require('util')
@@ -15,7 +15,7 @@ let getText = require('../lib/fetcher').text
 let tahta = require('../lib/tahta')
 let tahta2 = require('../lib/tahta2')
 let axios = require('axios')
-let { whatanime, whatmusic} = require(`../lib/functions`)
+let { whatanime, whatmusic, runtime } = require(`../lib/functions`)
 let brainly = require ('brainly-scraper')
 let ocr = require('../lib/ocr')
 let fetch = require('node-fetch')
@@ -218,6 +218,10 @@ Image Menu
 var img = fs.readFileSync(global.thumb)
 caliph.sendMessage(m.chat, img, mType.image, { quoted: freply('Rikka-Botz WhatsApp', img), caption: menu })
 break 
+case prefix+'runtime':
+case prefix+'uptime':
+m.reply(runtime(process.uptime())
+break
 case prefix+'whatmusic':
 if (!m.quoted) throw `Reply Musik Yg Mau Dicari judulnya!`
 if (!/audio|video/.test(m.quoted.mtype)) throw `Reply Musik Yg Mau Dicari judulnya!`
