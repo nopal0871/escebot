@@ -220,7 +220,7 @@ caliph.sendMessage(m.chat, img, mType.image, { quoted: freply('Rikka-Botz WhatsA
 break 
 case prefix+'runtime':
 case prefix+'uptime':
-m.reply(runtime(process.uptime())
+m.reply(runtime(process.uptime()))
 break
 case prefix+'whatmusic':
 if (!m.quoted) throw `Reply Musik Yg Mau Dicari judulnya!`
