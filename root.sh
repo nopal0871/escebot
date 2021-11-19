@@ -1,6 +1,6 @@
 echo "Please wait, Installing curl..."
 sudo apt-get install curl -y
-curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 echo "Please wait, Installing ffmpeg..."
 sudo apt-get install ffmpeg -y
 echo "Please wait, Installing webp..."
