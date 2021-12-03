@@ -1024,6 +1024,7 @@ users = groupMem.map(u => u.jid)
   await caliph.relayWAMessage(msgs)
 break
 case prefix+'ohidetag': 
+case prefix+'oh':
 if (!m.isGroup) return m.reply('Perintah ini khusus didalam grup!')
 if (!isOwner) return m.reply('Perintah ini khusus admin grup!')
 users = groupMem.map(u => u.jid)
