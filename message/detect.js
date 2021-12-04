@@ -50,7 +50,7 @@ caliph.sendMessage(json.jid, await getBuffer(canvas), 'imageMessage', { caption,
 break
 }
 } catch (e) {
-console.error(color(`[ERR]`, 'red`), color('~>', 'yellow'), e)
+console.error(color(`[ERR]`, `red`), color('~>', 'yellow'), e)
 }
 }
 
