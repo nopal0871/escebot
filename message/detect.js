@@ -39,7 +39,7 @@ buttons = [
   {buttonId: '', buttonText: {displayText: 'Welcome 👋'}, type: 1}
 ]
 const buttonsMessage = {
-    ...msg.message 
+    ...msg.message,
     contentText: `${caption}`.trim(),    
 footerText:`Rikka-Bot By Caliph | © ${new Date().getFullYear()}`,
     buttons: buttons,
@@ -62,7 +62,7 @@ buttons = [
   {buttonId: '', buttonText: {displayText: 'Bye 👋'}, type: 1}
 ]
 const buttonsMessage = {
-    ...msg.message 
+    ...msg.message,
     contentText: `${caption}`.trim(),    
 footerText:`Rikka-Bot By Caliph | © ${new Date().getFullYear()}`,
     buttons: buttons,
