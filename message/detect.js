@@ -1,7 +1,9 @@
 let fs = require('fs')
 let chalk = require('chalk')
+let { color } = require('../lib/color')
 
 module.exports = async function wel(caliph, json) {
+try {
 let welcome = JSON.parse(fs.readFileSync('./database/chat/welcome.json').toString())
 let left = JSON.parse(fs.readFileSync('./database/chat/left.json').toString())
 let detect = JSON.parse(fs.readFileSync('./database/chat/detect.json').toString())
@@ -45,6 +47,9 @@ var canvas = global.API('caliphAPI', '/api/goodbye', { username, groupname: meta
 caliph.sendMessage(json.jid, { url: canvas }, 'imageMessage', { caption, contextInfo: { mentionedJid: caliph.parseMention(caption)}})
 }
 break
+}
+} catch (e) {
+console.error(color(`[ERR]`, 'red`), ':', e)
 }
 }
 
