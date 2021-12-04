@@ -1,6 +1,7 @@
 let fs = require('fs')
 let chalk = require('chalk')
 let { color } = require('../lib/color')
+let { buffer } = require('../lib/fetcher')
 
 module.exports = async function wel(caliph, json) {
 try {
@@ -33,7 +34,7 @@ gcicon = await caliph.getProfilePicture(json.jid).catch(e => 'https://storage.ca
 caption = toformat(mess.group.welcome, i)
 username = caliph.getName(i)
 var canvas = global.API('caliphAPI', '/api/welcome', { username, groupname: meta.subject, groupicon: gcicon, membercount: meta.participants.length, profile: getpp, background: 'https://storage.caliph71.xyz/img/bg2.jpg' }, 'apikey')
-caliph.sendMessage(json.jid, { url: canvas }, 'imageMessage', { caption, contextInfo: { mentionedJid: caliph.parseMention(caption)}})
+caliph.sendMessage(json.jid, await getBuffer(canvas), 'imageMessage', { caption, contextInfo: { mentionedJid: caliph.parseMention(caption)}})
 }
 break
 case 'remove': 
@@ -44,12 +45,12 @@ gcicon = await caliph.getProfilePicture(json.jid).catch(e => 'https://storage.ca
 caption = toformat(mess.group.bye, i)
 username = caliph.getName(i)
 var canvas = global.API('caliphAPI', '/api/goodbye', { username, groupname: meta.subject, groupicon: gcicon, membercount: meta.participants.length, profile: getpp, background: 'https://storage.caliph71.xyz/img/bg2.jpg' }, 'apikey')
-caliph.sendMessage(json.jid, { url: canvas }, 'imageMessage', { caption, contextInfo: { mentionedJid: caliph.parseMention(caption)}})
+caliph.sendMessage(json.jid, await getBuffer(canvas), 'imageMessage', { caption, contextInfo: { mentionedJid: caliph.parseMention(caption)}})
 }
 break
 }
 } catch (e) {
-console.error(color(`[ERR]`, 'red`), ':', e)
+console.error(color(`[ERR]`, 'red`), color('~>', 'yellow'), e)
 }
 }
 
