@@ -34,8 +34,20 @@ gcicon = await caliph.getProfilePicture(json.jid).catch(e => 'https://storage.ca
 caption = toformat(mess.group.welcome, i)
 username = caliph.getName(i)
 var canvas = global.API('caliphAPI', '/api/welcome', { username, groupname: meta.subject, groupicon: gcicon, membercount: meta.participants.length, profile: getpp, background: 'https://storage.caliph71.xyz/img/bg2.jpg' }, 'apikey')
-caliph.sendMessage(json.jid, await buffer(canvas), 'imageMessage', { caption, contextInfo: { mentionedJid: caliph.parseMention(caption)}})
+msg = caliph.toMSG(await buffer(canvas), 'imageMessage')
+buttons = [
+  {buttonId: '', buttonText: {displayText: 'Welcome 👋'}, type: 1}
+]
+const buttonsMessage = {
+    ...msg.message 
+    contentText: `${caption}`.trim(),    
+footerText:`Rikka-Bot By Caliph | © ${new Date().getFullYear()}`,
+    buttons: buttons,
+    headerType: "IMAGE"
 }
+const sendMsg = await caliph.prepareMessageFromContent(m.key.remoteJid,{buttonsMessage},{ quoted: { key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast'}, message: { conversation: `Welcome ${username}` }}, contextInfo: { mentionedJid: caliph.parseMention(caption) }, sendEphemeral: true})
+
+await caliph.relayWAMessage(sendMsg)}
 break
 case 'remove': 
 if (!left.includes(json.jid)) return
@@ -45,7 +57,20 @@ gcicon = await caliph.getProfilePicture(json.jid).catch(e => 'https://storage.ca
 caption = toformat(mess.group.bye, i)
 username = caliph.getName(i)
 var canvas = global.API('caliphAPI', '/api/goodbye', { username, groupname: meta.subject, groupicon: gcicon, membercount: meta.participants.length, profile: getpp, background: 'https://storage.caliph71.xyz/img/bg2.jpg' }, 'apikey')
-caliph.sendMessage(json.jid, await buffer(canvas), 'imageMessage', { caption, contextInfo: { mentionedJid: caliph.parseMention(caption)}})
+msg = caliph.toMSG(await buffer(canvas), 'imageMessage')
+buttons = [
+  {buttonId: '', buttonText: {displayText: 'Bye 👋'}, type: 1}
+]
+const buttonsMessage = {
+    ...msg.message 
+    contentText: `${caption}`.trim(),    
+footerText:`Rikka-Bot By Caliph | © ${new Date().getFullYear()}`,
+    buttons: buttons,
+    headerType: "IMAGE"
+}
+const sendMsg = await caliph.prepareMessageFromContent(m.key.remoteJid,{buttonsMessage},{ quoted: { key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast'}, message: { conversation: `Goodbye ${username}` }}, contextInfo: { mentionedJid: caliph.parseMention(caption) }, sendEphemeral: true})
+
+await caliph.relayWAMessage(sendMsg)
 }
 break
 }
