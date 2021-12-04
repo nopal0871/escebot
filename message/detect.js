@@ -44,8 +44,8 @@ const buttonsMessage = {
 footerText:`Rikka-Bot By Caliph | © ${new Date().getFullYear()}`,
     buttons: buttons,
     headerType: "IMAGE"
- const sendMsg = await caliph.prepareMessageFromContent(json.jid,{buttonsMessage},{ quoted: { key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast'}, message: { conversation: `Welcome ${username}` }}, contextInfo: { mentionedJid: caliph.parseMention(caption) }, sendEphemeral: true})
-
+}
+sendMsg = await caliph.prepareMessageFromContent(json.jid,{buttonsMessage},{ quoted: { key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast'}, message: { conversation: `Welcome ${username}` }}, contextInfo: { mentionedJid: caliph.parseMention(caption) }, sendEphemeral: true})
 await caliph.relayWAMessage(sendMsg)}
 break
 case 'remove': 
@@ -60,15 +60,14 @@ msg = caliph.toMSG(await buffer(canvas), 'imageMessage')
 buttons = [
   {buttonId: '', buttonText: {displayText: 'Bye 👋'}, type: 1}
 ]
-const buttonsMessage = {
+buttonsMessage = {
     ...msg.message,
     contentText: `${caption}`.trim(),    
 footerText:`Rikka-Bot By Caliph | © ${new Date().getFullYear()}`,
     buttons: buttons,
     headerType: "IMAGE"
 }
-const sendMsg = await caliph.prepareMessageFromContent(json.jid,{buttonsMessage},{ quoted: { key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast'}, message: { conversation: `Goodbye ${username}` }}, contextInfo: { mentionedJid: caliph.parseMention(caption) }, sendEphemeral: true})
-
+sendMsg = await caliph.prepareMessageFromContent(json.jid,{buttonsMessage},{ quoted: { key: { fromMe: false, participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast'}, message: { conversation: `Goodbye ${username}` }}, contextInfo: { mentionedJid: caliph.parseMention(caption) }, sendEphemeral: true})
 await caliph.relayWAMessage(sendMsg)
 }
 break
