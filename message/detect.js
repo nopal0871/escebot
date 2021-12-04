@@ -36,7 +36,7 @@ username = caliph.getName(i)
 var canvas = global.API('caliphAPI', '/api/welcome', { username, groupname: meta.subject, groupicon: gcicon, membercount: meta.participants.length, profile: getpp, background: 'https://storage.caliph71.xyz/img/bg2.jpg' }, 'apikey')
 msg = caliph.toMSG(await buffer(canvas), 'imageMessage')
 buttons = [
-  {buttonId: '', buttonText: {displayText: 'Welcome 👋'}, type: 1}
+  {buttonId: 'p', buttonText: {displayText: 'Welcome 👋'}, type: 1}
 ]
 const buttonsMessage = {
     ...msg.message,
@@ -58,7 +58,7 @@ username = caliph.getName(i)
 var canvas = global.API('caliphAPI', '/api/goodbye', { username, groupname: meta.subject, groupicon: gcicon, membercount: meta.participants.length, profile: getpp, background: 'https://storage.caliph71.xyz/img/bg2.jpg' }, 'apikey')
 msg = caliph.toMSG(await buffer(canvas), 'imageMessage')
 buttons = [
-  {buttonId: '', buttonText: {displayText: 'Bye 👋'}, type: 1}
+  {buttonId: 'h', buttonText: {displayText: 'Bye 👋'}, type: 1}
 ]
 buttonsMessage = {
     ...msg.message,
