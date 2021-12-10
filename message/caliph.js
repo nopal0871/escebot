@@ -598,8 +598,10 @@ result = require('mathjs').evaluate(val)
 m.reply(`_${formats}_ = ${result}`)
 break
 case prefix+'ping': 
+case prefix+'speed':
+case prefix+'p':
 old = processTime(m.messageTimestamp.low, new Date())
-m.reply('Speed : '+String(old) + 'Second')
+m.reply('Speed : '+String(old) + ' Second')
 break
 case prefix+'ppcouple': 
 m.reply('Mohon tunggu sebentar...')
