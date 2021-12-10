@@ -15,7 +15,7 @@ let getText = require('../lib/fetcher').text
 let tahta = require('../lib/tahta')
 let tahta2 = require('../lib/tahta2')
 let axios = require('axios')
-let { whatanime, whatmusic, runtime } = require(`../lib/functions`)
+let { whatanime, whatmusic, runtime, processTime } = require(`../lib/functions`)
 let brainly = require ('brainly-scraper')
 let ocr = require('../lib/ocr')
 let fetch = require('node-fetch')
@@ -598,9 +598,8 @@ result = require('mathjs').evaluate(val)
 m.reply(`_${formats}_ = ${result}`)
 break
 case prefix+'ping': 
-old = new Date
-await m.reply(`Testing ping...`)
-m.reply('Speed : '+String(new Date - old) + 'ms')
+old = processTime(m.messageTimestamp.low, new Date())
+m.reply('Speed : '+String(old) + 'Second')
 break
 case prefix+'ppcouple': 
 m.reply('Mohon tunggu sebentar...')
