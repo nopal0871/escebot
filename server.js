@@ -19,10 +19,9 @@ async function connect(conn, PORT, use_ngrok = false) {
     app.use(async (req, res) => {
         if (req.path == '/session' && conn.state == 'open') return res.send(conn.base64EncodedAuthInfo())
         if (conn.state == 'open') return res.status(200).send({status: 200, message: 'Bot Telah Tersambung ke whatsapp web anda!', user: conn.user })
-        qrr = await qrcode.toBuffer(_qr, { scale: 17 })
-        let { url } = (await uploadFile(qrr)).result
+        qrr = await qrcode.toDataURL(_qr, { scale: 17 })
         html = fs.readFileSync('./views/scan.html', 'utf-8')
-        res.send(html.replace(/\$QRURL/g, url))
+        res.send(html.replace(/\$QRURL/g, qrr))
     })
    
     conn.on('qr', qr => {
