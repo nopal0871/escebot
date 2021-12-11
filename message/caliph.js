@@ -1201,7 +1201,7 @@ if (s) m.reply(util.format(s), null, { detectLinks: false })
 })
 break
 default: 
-if (isCmd && (command.length == 1) == false) m.reply(`Command *${command}* not found`)
+// if (isCmd && (command.length == 1) == false) m.reply(`Command *${command}* not found`)
 }
 
 } catch (e) {
