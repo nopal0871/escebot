@@ -102,7 +102,10 @@ footerText: `ketik .regist jika button tidak terlihat`,
 }
 const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{ contextInfo: { mentionedJid: [m.sender] }, sendEphemeral: true})
 
-return caliph.relayWAMessage(sendMsg)
+relay = await caliph.relayWAMessage(sendMsg)
+return setInterval(() => {
+caliph.deleteMessage(relay.key.remoteJid, relay.key.id)
+}, 15 * 1000)
 }
 if (tebakkata[m.chat] && m.quoted && m.quoted.id == tebakkata[m.chat].m.key.id) {
 if (budy.toLowerCase() !== tebakkata[m.chat].jawaban) return m.reply('Salah!')
