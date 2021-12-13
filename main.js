@@ -24,7 +24,6 @@ caliph.logger.level = opts.logger == true ? 'info' : opts.logger
 caliph.browserDescription[0] = "Bot WhatsApp By @Caliph91"
 var { currentVersion } = await fetch.json(`https://web.whatsapp.com/check-update?version=1&platform=web`)
 caliph.version = currentVersion.split('.').map(a => parseInt(a)) || [2, 2140, 12]
-caliph.logger.level = 'warn'
 console.log(color(figlet.textSync('WHATSAPP BOT', {
 		font: 'Standard',
 		horizontalLayout: 'default',
