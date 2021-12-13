@@ -102,9 +102,9 @@ footerText: `ketik .regist jika button tidak terlihat`,
 }
 const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{ contextInfo: { mentionedJid: [m.sender] }, sendEphemeral: true})
 
-relay = await caliph.relayWAMessage(sendMsg)
+await caliph.relayWAMessage(sendMsg)
 return setInterval(() => {
-caliph.deleteMessage(relay.key.remoteJid, relay.key.id)
+caliph.deleteMessage(sendMsg.key.remoteJid, sendMsg.key.id).catch(() => {})
 }, 15 * 1000)
 }
 if (tebakkata[m.chat] && m.quoted && m.quoted.id == tebakkata[m.chat].m.key.id) {
