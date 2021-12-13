@@ -103,7 +103,7 @@ footerText: `ketik .regist jika button tidak terlihat`,
 const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{ contextInfo: { mentionedJid: [m.sender] }, sendEphemeral: true})
 
 await caliph.relayWAMessage(sendMsg)
-return setInterval(() => {
+return setTimeout(() => {
 caliph.deleteMessage(sendMsg.key.remoteJid, sendMsg.key.id).catch(() => {})
 }, 15 * 1000)
 }
