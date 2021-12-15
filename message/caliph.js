@@ -294,8 +294,8 @@ case prefix+"sepia":
 case prefix+"flip":
 case prefix+"filter1":
 case prefix+"filter2":
-case prefix+"filter3":
-case prefix+"filter4':
+case prefix+"filter3": 
+case prefix+"filter4":
 case prefix+"filter5":
 if (!isImage) throw `Kirim/Reply Gambar dengan perintah *${command}*`
 buffer = await (m.quoted ? m.quoted : m).download()
