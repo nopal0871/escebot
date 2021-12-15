@@ -90,7 +90,7 @@ return {key:{ fromMe:false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remo
 						"businessOwnerJid": "0@s.whatsapp.net"}}}
 }
 /* Ends Fake Reply */
-    if (!isRegist && isCmd && !command.includes('regist')) {
+    if (!isRegist && isCmd && !command.includes('regist') && !global.selfmode) {
     let buttons = [
   {buttonId: '/regist', buttonText: {displayText: 'REGISTER'}, type: 1}
 ]
@@ -103,9 +103,6 @@ footerText: `ketik .regist jika button tidak terlihat`,
 const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{ contextInfo: { mentionedJid: [m.sender] }, sendEphemeral: true})
 
 await caliph.relayWAMessage(sendMsg)
-return setTimeout(() => {
-caliph.deleteMessage(sendMsg.key.remoteJid, sendMsg.key.id).catch(() => {})
-}, 15 * 1000)
 }
 if (tebakkata[m.chat] && m.quoted && m.quoted.id == tebakkata[m.chat].m.key.id) {
 if (budy.toLowerCase() !== tebakkata[m.chat].jawaban) return m.reply('Salah!')
@@ -145,7 +142,7 @@ menu = `
 ┗━━⬣
 
 ┏━━━⬣ 𝙂𝘾 𝘽𝙊𝙏 𝙒𝘼
-┃ ⬡ Gc 1 : https://clph.pw/ce566d
+┃ ⬡ Gc 1 : https://clph.pw/gcbot
 ┗━━⬣
 
 ┏━━「 Main Menu 」
@@ -256,9 +253,9 @@ case prefix+'uptime':
 m.reply(runtime(process.uptime()))
 break
 case prefix+'whatmusic':
-if (!m.quoted) throw `Reply Musik Yg Mau Dicari judulnya!`
-if (!/audio|video/.test(m.quoted.mtype)) throw `Reply Musik Yg Mau Dicari judulnya!`
-buffer = await (m.quoted ? m.quoted : m).download()
+n = m.quoted ? m.quoted : m
+if (!/audio|video/.test(n.mtype)) throw `Reply Musik Yg Mau Dicari judulnya!`
+buffer = await (n).download()
 var { data:result } = await whatmusic(buffer)
 teks = `╠══✪〘 WHATMUSIC 〙✪══
 ║
@@ -293,19 +290,17 @@ var chats = caliph.chats.all().filter(v => v.jid && v.jid !== 'status@broadcast'
   for (let id of chats) await caliph.copyNForward(id, kon, true)
   caliph.reply(m.chat, `_Mengirim pesan broadcast ke ${chats.length} chats_`, m)
 break
-case prefix+"flip":
-if (!isImage) throw `Kirim/Reply Gambar dengan perintah *${command}*`
-buffer = await (m.quoted ? m.quoted : m).download()
-var { result } = await uploadFile(buffer)
-apinya = global.API("caliphAPI", "/api/img/flip", { url: result.url }, "apikey")
-buffer = await getBuffer(apinya)
-caliph.sendMessage(m.chat, buffer, mType.image, { quoted: m, caption: 'Nih kak dh jdi\nFollow : Instagram.com/caliph91_' })
-break
 case prefix+"sepia":
+case prefix+"flip":
+case prefix+"filter1":
+case prefix+"filter2":
+case prefix+"filter3":
+case prefix+"filter4':
+case prefix+"filter5":
 if (!isImage) throw `Kirim/Reply Gambar dengan perintah *${command}*`
 buffer = await (m.quoted ? m.quoted : m).download()
 var { result } = await uploadFile(buffer)
-apinya = global.API("caliphAPI", "/api/img/sepia", { url: result.url }, "apikey")
+apinya = global.API("caliphAPI", "/api/img/"+command.slice(1), { url: result.url }, "apikey")
 buffer = await getBuffer(apinya)
 caliph.sendMessage(m.chat, buffer, mType.image, { quoted: m, caption: 'Nih kak dh jdi\nFollow : Instagram.com/caliph91_' })
 break
