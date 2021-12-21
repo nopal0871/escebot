@@ -31,7 +31,9 @@ console.log(color(figlet.textSync('WHATSAPP BOT', {
 		width: 80,
 		whitespaceBreak: false
 	}), 'cyan'))
-console.log(color('[ CREATED BY Caliph91 ]'))
+console.log(color('[ CREATED BY CALIPH ]'))
+console.log(color('[ REPORT BUG ]', 'yellow'), color('https://clph.pw/reportbug', 'yellow'))
+console.log(color('[ SCRIPT BOT ]', 'yellow'), color('https://clph.pw/scriptbot', 'yellow'))
 if (opts.server) {
   require('./server')(caliph, process.env.PORT || opts.server == true ? 8080 : opts.server)
 } else {
@@ -51,7 +53,7 @@ fs.existsSync(authfile) && caliph.loadAuthInfo(authfile)
             if (fs.existsSync(authfile)) {
                 fs.unlinkSync(authfile)
             }
-            caliph.clearAuthInfo()
+            process.exit()
 	    mulai()
         }
 	})
@@ -66,13 +68,13 @@ var mDisplay = m > 0 ? m + (m == 1 ? " Menit,":" Menit,") : "";
 var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay + hDisplay + mDisplay + sDisplay; 
 }
 	caliph.on('open', (ye) => {
-		console.log(color('[CLIENT]', 'cyan'), color('Connected...', 'green'))
+		console.log(color('[ CLIENT ]', 'cyan'), color('Connected...', 'green'))
 	})
 	await caliph.connect().then(async v => { 
-        console.log(color(`[CLIENT]`, 'cyan'), color('WhatsApp Web Running On Version :'), color(caliph.version.join('.'), 'yellow'))
+        console.log(color(`[ CLIENT ]`, 'cyan'), color('WhatsApp Web Running On Version :'), color(caliph.version.join('.'), 'yellow'))
        // console.log(`Nama Bot : ${caliph.user.name}\nID Bot : ${awesome('+'+caliph.user.jid.split('@')[0]).getNumber('international')}\nMode : ${selfmode ? 'Self Mode' : 'Public Mode'}\nHostname : ${os.hostname()}`)
 		if (!fs.existsSync(authfile)) fs.writeFileSync(authfile, JSON.stringify(caliph.base64EncodedAuthInfo(), null, '\t'))
-	owner.map(a => caliph.reply(a + "@c.us", 'Bot Started.....'))
+	// owner.map(a => caliph.reply(a + "@c.us", 'Bot Started.....'))
           if (opts.autobio || global.autobio) {
           setInterval(async () => {
               user = JSON.parse(fs.readFileSync('database/user/register.json', 'utf-8'))
@@ -111,7 +113,7 @@ var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay +
 	if (autoread) await caliph.chatRead(msg.chat).catch(() => {})
     require('./message/caliph')(caliph, msg)
     } catch (e) {
-    console.log(color('[ERR]', 'cyan'), color(e, 'red'))
+    console.log(color('[ ERR ]', 'cyan'), color(e, 'red'))
     global.owner.map(async a => await caliph.sendMessage(a + '@c.us', 'Handler Error :\n\n'+require('util').format(e) + '\n\nClosed...', 'conversation'))
     process.exit()
     }
