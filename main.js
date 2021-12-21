@@ -73,7 +73,7 @@ var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay +
 	await caliph.connect().then(async v => { 
         console.log(color(`[ CLIENT ]`, 'cyan'), color('WhatsApp Web Running On Version :'), color(caliph.version.join('.'), 'yellow'))
         console.log(color('[ MESSAGE ]', 'cyan'), color('Type #menu to sending menu!', 'green'))
-        console.log(color('Notes :', 'cyan'), color('tolong jangan menghapus/mengganti nama author!\n\nPlease don\'t rename/delete author name!', 'green'))
+        console.log(color('Notes :', 'cyan'), color('\ntolong jangan menghapus/mengganti nama author!\n\nPlease don\'t rename/delete author name!', 'yellow'))
        // console.log(`Nama Bot : ${caliph.user.name}\nID Bot : ${awesome('+'+caliph.user.jid.split('@')[0]).getNumber('international')}\nMode : ${selfmode ? 'Self Mode' : 'Public Mode'}\nHostname : ${os.hostname()}`)
 		if (!fs.existsSync(authfile)) fs.writeFileSync(authfile, JSON.stringify(caliph.base64EncodedAuthInfo(), null, '\t'))
 	// owner.map(a => caliph.reply(a + "@c.us", 'Bot Started.....'))
