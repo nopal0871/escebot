@@ -32,8 +32,8 @@ console.log(color(figlet.textSync('WHATSAPP BOT', {
 		whitespaceBreak: false
 	}), 'cyan'))
 console.log(color('[ CREATED BY CALIPH ]'))
-console.log(color('[ REPORT BUG ]', 'yellow'), color('https://clph.pw/reportbug', 'yellow'))
-console.log(color('[ SCRIPT BOT ]', 'yellow'), color('https://clph.pw/scriptbot', 'yellow'))
+console.log(color('[ REPORT BUG ]', 'cyan'), color('https://clph.pw/reportbug', 'yellow'))
+console.log(color('[ SCRIPT BOT ]', 'cyan'), color('https://clph.pw/scriptbot', 'yellow'))
 if (opts.server) {
   require('./server')(caliph, process.env.PORT || opts.server == true ? 8080 : opts.server)
 } else {
@@ -67,11 +67,13 @@ var hDisplay = h > 0 ? h + (h == 1 ? " Jam,":" Jam,") : "";
 var mDisplay = m > 0 ? m + (m == 1 ? " Menit,":" Menit,") : ""; 
 var sDisplay = s > 0 ? s + (s == 1 ? " Detik,":" Detik") : ""; return dDisplay + hDisplay + mDisplay + sDisplay; 
 }
-	caliph.on('open', (ye) => {
-		console.log(color('[ CLIENT ]', 'cyan'), color('Connected...', 'green'))
-	})
+      caliph.on('open', () => {
+     console.log(color('[ CLIENT ]', 'cyan'), color('Connected...', 'green'))
+      })
 	await caliph.connect().then(async v => { 
         console.log(color(`[ CLIENT ]`, 'cyan'), color('WhatsApp Web Running On Version :'), color(caliph.version.join('.'), 'yellow'))
+        console.log(color('[ MESSAGE ]', 'cyan'), color('Type #menu to sending menu!', 'green'))
+        console.log(color('Notes :', 'cyan'), color('tolong jangan menghapus/mengganti nama author!\n\nPlease don\'t rename/delete author name!', 'green'))
        // console.log(`Nama Bot : ${caliph.user.name}\nID Bot : ${awesome('+'+caliph.user.jid.split('@')[0]).getNumber('international')}\nMode : ${selfmode ? 'Self Mode' : 'Public Mode'}\nHostname : ${os.hostname()}`)
 		if (!fs.existsSync(authfile)) fs.writeFileSync(authfile, JSON.stringify(caliph.base64EncodedAuthInfo(), null, '\t'))
 	// owner.map(a => caliph.reply(a + "@c.us", 'Bot Started.....'))
