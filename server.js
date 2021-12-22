@@ -5,6 +5,7 @@ let uploadFile = require('./lib/uploadFile')
 let fs = require('fs')
 
 async function connect(conn, PORT, use_ngrok = false) {
+    conn.connectOptions.logQR = false
     let app = global.app = express()
     let _qr = 'invalid'
     if (use_ngrok) {
@@ -28,7 +29,7 @@ async function connect(conn, PORT, use_ngrok = false) {
         _qr = qr
     })
     
-    let server = app.listen(PORT, () => console.log('App listened on port', PORT))
+    let server = app.listen(PORT, () => console.log('App running on', 'http://localhost'+PORT))
 }
 
 module.exports = connect
