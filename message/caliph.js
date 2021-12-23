@@ -102,7 +102,7 @@ footerText: `ketik .regist jika button tidak terlihat`,
 }
 const sendMsg = await caliph.prepareMessageFromContent(m.chat,{buttonsMessage},{ contextInfo: { mentionedJid: [m.sender] }, sendEphemeral: true})
 
-await caliph.relayWAMessage(sendMsg)
+return await caliph.relayWAMessage(sendMsg)
 }
 if (tebakkata[m.chat] && m.quoted && m.quoted.id == tebakkata[m.chat].m.key.id) {
 if (budy.toLowerCase() !== tebakkata[m.chat].jawaban) return m.reply('Salah!')
