@@ -19,5 +19,5 @@ echo "Please wait, Installing tesseract-ocr..."
 sudo apt-get install tesseract-ocr -y
 clear
 echo "Please wait, Installing node_modules..."
-npm install
+sudo npm install
 echo "installing finished..."
