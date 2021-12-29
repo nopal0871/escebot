@@ -31,11 +31,11 @@
 
 # Ubuntu
 ```bash
-> apt install git -y
-> git clone https://github.con/caliph91/bot-whatsapp
-> cd bot-whatsapp
-> bash install.sh
-> node index
+> sudo apt install git -y
+> sudo git clone https://github.con/caliph91/bot-whatsapp
+> sudo cd bot-whatsapp
+> sudo bash root.sh
+> sudo node index
 ```
 
 # Windows
