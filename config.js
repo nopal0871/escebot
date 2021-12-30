@@ -1,11 +1,11 @@
 let fs = require('fs')
 let chalk = require('chalk')
-global.owner = ['62882003806038']
+global.owner = ['6285781628368']
 global.autoread = false
 global.selfmode = false
 global.autobio = false // or node . --autobio
 global.thumb = './thumb/itsuki.jpg'
-global.fakereplyt = 'Rikka-Botz WhatsApp'
+global.fakereplyt = 'Hyper-Bot WhatsApp'
 global.mess = {
 group : {
 welcome : `Welcome @user\n\nSelamat datang di grup @subject`,
@@ -16,8 +16,8 @@ demote: '@user Sekarang bukan admin!'
 error : 'Terjadi Kesalahan',
 success: 'Sukses...'
 }
-global.prefix = '🐤'
-global.author = '@caliph91_'
+global.prefix = '.'
+global.author = '@HyperBot'
 global.packname = 'WhatsApp Bot'
 
 
